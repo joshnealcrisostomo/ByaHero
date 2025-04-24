@@ -29,6 +29,8 @@ While general social media platforms provide some advice, they lack a dedicated 
 
 ByaHero! was created to fill the gap between general social media and specialized transportation apps by providing a dedicated community platform where accurate, real-time transportation advice can be shared in a user-friendly format. We aim to build a supportive community that helps alleviate the daily stress and confusion of commuting in the Philippines.
 
+*[Return to TOC](#table-of-contents)*
+
 ----------------------------------------------------------------------
 
 ## Solution
@@ -41,6 +43,8 @@ ByaHero! was created to fill the gap between general social media and specialize
 - Community-driven knowledge sharing in a supportive environment
 - A voting system to highlight the most helpful information
 
+*[Return to TOC](#table-of-contents)*
+
 ----------------------------------------------------------------------
 
 ## What I Learned
@@ -52,6 +56,8 @@ ByaHero! was created to fill the gap between general social media and specialize
 - Creating effective content moderation tools
 - Designing intuitive user interfaces for diverse user groups
 - Managing authentication and user permissions at scale
+
+*[Return to TOC](#table-of-contents)*
   
 ----------------------------------------------------------------------
 
@@ -154,6 +160,8 @@ ByaHero! was created to fill the gap between general social media and specialize
 - Easy navigation and user-friendly layout.
 - Visually optimized for desktop users.
 
+*[Return to TOC](#table-of-contents)*
+
 ----------------------------------------------------------------------
 
 ## Technologies Used
@@ -168,6 +176,8 @@ ByaHero! was created to fill the gap between general social media and specialize
 
 **File Handling:** ![multer](https://img.shields.io/badge/Multer-1B1F23?style=flat&logo=npm&logoColor=white)
 
+*[Return to TOC](#table-of-contents)*
+
 ----------------------------------------------------------------------
 
 ## Credits
@@ -176,6 +186,8 @@ ByaHero! was created to fill the gap between general social media and specialize
 1. Patrick Lim
 2. Isabella Ross
 3. Eulysis Dimailig
+
+*[Return to TOC](#table-of-contents)*
 
 ----------------------------------------------------------------------
 
@@ -206,3 +218,5 @@ This will install all packages listed in the package.json file, including Expres
 ```bash 
 npm install
 ```
+
+*[Return to TOC](#table-of-contents)*
