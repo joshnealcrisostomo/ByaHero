@@ -80,8 +80,18 @@ The web application is built using JavaScript, with a Node.js and Express backen
 - Ends session and clears stored user data.
 - Terminates any active "remember me" sessions.
 
+↕️ Upvote/Downvote
+- One-time voting per user per post/comment.
+- Available on all content, including the user’s own.
+
+🔎 Search
+- Keyword-based search across titles and body content.
+- Search by tag, phrase, or related terms.
+- Users can do a quick search or a detailed search.
+- Users can also filter their feed by post tags.
+
 👤 **Profile Features**
-1. Create Profile
+1. Create a Profile
    - Register and Login Features apply
 
 2. View User Profile
@@ -96,7 +106,7 @@ The web application is built using JavaScript, with a Node.js and Express backen
    - Deletion of profiles will permanently delete the user's information from the database.
 
 📩 **Post Features**
-1. Create Post
+1. Create a Post
    - Users can create a post with a click of a button
    - Includes:
      - Title (required)
@@ -121,8 +131,66 @@ The web application is built using JavaScript, with a Node.js and Express backen
    - A user can delete their own post through their profile or through the individual post view in the dashboard.
    - Deletion of posts will permanently delete the post's information from the database.
 
+💬 **Comment/Reply Feature**
+1. Create a Comment / Reply
+   - Comment on any post or nested replies.
+   - Unlimited nesting for threaded discussions.
 
+2. View Comments / Replies
+   - Comments and replies are loaded together with the individual post.
 
+3. Edit Comment
+   - Users can:
+     - Edit the content of their own comment.
+     - Edited comments are marked with "Edited" status.
+   - A user can edit their own comment through their profile or through the individual post view in the dashboard.
+
+4. Delete Comment
+   - A user can delete their own comment through their profile or through the individual post view in the dashboard.
+   - Deletion of comments will permanently delete the comment's information from the database.
+
+📂 General UX
+- Clean and responsive UI with consistent design.
+- Easy navigation and user-friendly layout.
+- Visually optimized for desktop users.
+
+----------------------------------------------------------------------
+
+## 🛠️ Technologies Used
+
+**Backend:** ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white) ![Express-session](https://img.shields.io/badge/Express--session-000000?style=flat&logo=express&logoColor=white) ![Handlebars](https://img.shields.io/badge/Handlebars.js-000000?style=flat&logo=handlebarsdotjs&logoColor=orange)
+
+**Frontend:** ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+
+**Database:** ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+
+**Authentication:** ![bcrypt](https://img.shields.io/badge/bcrypt-003B57?style=flat&logo=keybase&logoColor=white)
+
+**File Handling:** ![multer](https://img.shields.io/badge/Multer-1B1F23?style=flat&logo=npm&logoColor=white)
+
+----------------------------------------------------------------------
+
+## 👥 Credits
+
+Collaborators:
+1. Patrick Lim
+2. Isabella Ross
+3. Eulysis Dimailig
+
+----------------------------------------------------------------------
+
+## 🥳 Getting Started
+
+This guide will walk you through the process of setting up and running the ByaHero! web application locally on your machine.
+
+**Prerequisites**
+Before you begin, ensure you have the following installed:
+- Node.js (v14.x or higher recommended)
+- MongoDB (local installation or MongoDB Atlas account)
+- Git
+
+**Git Clone Repository**
+```bash git clone [https://github.com/joshnealcrisostomo/ByaHero.git (https://github.com/joshnealcrisostomo/ByaHero.git)
 
 
 
