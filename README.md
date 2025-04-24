@@ -183,6 +183,8 @@ Collaborators:
 
 This guide will walk you through the process of setting up and running the ByaHero! web application locally on your machine.
 
+⚠ *I will not provide the .env file, which contains the PORT, MONGODB URI, and SESSION SECRET KEY*
+
 **Prerequisites**
 Before you begin, ensure you have the following installed:
 - Node.js (v14.x or higher recommended)
@@ -190,7 +192,15 @@ Before you begin, ensure you have the following installed:
 - Git
 
 **Git Clone Repository**
-```bash git clone [https://github.com/joshnealcrisostomo/ByaHero.git (https://github.com/joshnealcrisostomo/ByaHero.git)
 
+```bash 
+git clone https://github.com/joshnealcrisostomo/ByaHero.git
+cd ByaHero
 
+**Install Dependencies**
+Install all the required dependencies using npm
 
+This will install all packages listed in the package.json file, including Express, Handlebars, MongoDB drivers, bcrypt for authentication, multer for file handling, and other dependencies.
+
+```bash 
+npm install
