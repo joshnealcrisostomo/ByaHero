@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Panel</title>
+    <link rel="stylesheet" href="/styles_folder/searchPanel.css">
+</head>
+<body>
+    <div class="container">
+        <div class="right-panel">
+            <div class="search-form">
+                <input type="text" id="search" placeholder="Search...">
+                <button type="button">
+                    <img src="/icons/search.png" alt="search-btn">
+                </button>
+            </div>
+            <div class="title">
+                <h3>Post Tags</h3>
+                <span>
+                    <div class="filter-icon">
+                        <img src="/icons/filter.png" alt="filter-icon">
+                    </div>
+                </span>
+            </div>
+            <div class="transpo-types">
+                <div class="transpo-option">
+                    <input type="checkbox" id="Commute" class="switch">
+                    <label for="Commute"></label>
+                    <p>Commute</p>
+                </div>
+                <div class="transpo-option">
+                    <input type="checkbox" id="Price" class="switch">
+                    <label for="Price"></label>
+                    <p>Price</p>
+                </div>
+                <div class="transpo-option">
+                    <input type="checkbox" id="Route" class="switch">
+                    <label for="Route"></label>
+                    <p>Route</p>
+                </div>
+                <div class="transpo-option">
+                    <input type="checkbox" id="Location" class="switch">
+                    <label for="Location"></label>
+                    <p>Location</p>
+                </div>
+                <div class="transpo-option">
+                    <input type="checkbox" id="Weather" class="switch">
+                    <label for="Weather"></label>
+                    <p>Weather</p>
+                </div>
+            </div>
+        
+            {{#if isLoggedIn}}
+
+            {{else}}
+            <div class="login-container">
+                <div class="visitor-lbl">
+                    <h3>You are not currently logged in. </h3>
+                </div>
+                <div class="login-signup">
+                    <button type="button" class="login-signup-btn">Login / Sign Up</button>
+                </div>
+            </div>
+            {{/if}}
+
+            <a href="/about">ABOUT US</a>
+
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.login-signup-btn').addEventListener('click', function() {
+            window.location.href = '/welcome';
+        });
+    </script>    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check the boxes for tags that were previously selected
+            const urlParams = new URLSearchParams(window.location.search);
+            const tagParam = urlParams.get('tags');
+            
+            if (tagParam) {
+                const selectedTags = tagParam.split(',');
+                selectedTags.forEach(tag => {
+                    const checkbox = document.getElementById(tag);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        }); 
+    </script>
+</body>
+</html>

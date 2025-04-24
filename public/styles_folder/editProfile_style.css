@@ -1,0 +1,343 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFDAC8;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #292623;
+    opacity: 0.3; 
+    z-index: 1;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    overflow: hidden;
+    max-width: 1300px;
+}
+
+.changes-container {
+    width: 550px; 
+    height: 600px; 
+    background-color: #DFDAC8;
+    border-radius: 25px;
+    opacity: 1;
+    z-index: 3;
+    transition: all 0.3s;
+}
+
+.edit-top-menu {
+    display: flex;
+    background-color: #DFDAC8;
+    border-radius: 25px;
+    height: 50px;
+    width: 100%;
+    opacity: 1;
+    position: relative;
+    justify-content: space-between;
+}
+
+.edit-top-menu .exit-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+.edit-top-menu .exit-btn img {
+    width: 25px; 
+    height: 25px;
+}
+
+.edit-top-menu .exit-btn:hover {
+    background-color: rgba(12, 95, 179, 0.1); 
+    border-radius: 100%;
+}
+
+.edit-top-menu span h3 {
+    font-size: 20px;
+    margin-left: 15px;
+    margin-top: 15px;
+    transition: all 0.2s;
+}
+
+.save-prof-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 270px;
+}
+
+.save-prof-btn button { 
+    background-color: #8E1600;
+    font-size: 14px;
+    width: 70px;
+    border: 0.5px solid #8E1600;
+}  
+
+.save-btn {
+    margin: 10px;
+    background-color: #292623; 
+    color: ghostwhite; 
+    border: 1px solid #292623; 
+    padding: 6px 12px;
+    border-radius: 100px; 
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.1s ease;
+}
+
+.save-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #8E1600;
+}
+
+.edit-header-profile {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background-color: gray;
+    border-bottom: 4px solid ghostwhite;
+    overflow: hidden;
+}
+
+.edit-header-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+.edit-header-overlay {
+    background-color: black;
+    position: absolute;  
+    width: 100%;
+    height: 200px; 
+    opacity: 0.3; 
+}
+
+.edit-header-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.edit-header-btn {
+    position: absolute;      
+    top: 50%;                
+    left: 50%;               
+    transform: translate(-50%, -50%); 
+    z-index: 10;            
+    opacity: 1;
+}
+
+.edit-btn-overlay {
+    background-color: #D7D261;
+    padding: 16px;          
+    border-radius: 50px; 
+    opacity: 0.4;
+}
+
+.edit-header-btn button {
+    background: none;
+    border: none;
+    cursor: pointer;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-header-btn img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 2; 
+}
+
+
+.edit-pfp-overlay {
+    background-color: black;
+    position: absolute;  
+    width: 100%;
+    height: 100%;
+    opacity: 0.3; 
+}
+
+.edit-pfp-btn {
+    position: absolute;
+    top: 50%;                
+    left: 50%;               
+    transform: translate(-50%, -50%); 
+    z-index: 10;             
+    opacity: 1;
+}
+
+.edit-pfp-btn button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.edit-pfp-btn img {
+    width: 20px;
+    height: 20px;
+    z-index: 2; 
+}
+
+.edit-pfp-btn-overlay {
+    background-color: #D7D261;
+    padding: 16px;
+    border-radius: 50px; 
+    opacity: 0.4;
+    position: absolute; 
+    z-index: 1;
+}    
+
+
+.edit-fields {
+    background-color: #DFDAC8;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.name-field {
+    background-color: #DFDAC8;
+    width: 94%;
+    height: 55px;
+    border: 0.5px solid #292623;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.name-field input  {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 0 10px; 
+    font-family: Arial, sans-serif;
+    color: #292623;
+    outline: none;
+}
+
+.bio-field {
+    background-color: #DFDAC8;
+    width: 94%;
+    height: 120px;
+    border: 0.5px solid #292623;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.bio-field input  {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 0 10px; 
+    font-family: Arial, sans-serif;
+    color: #292623;
+    outline: none;
+}
+
+
+.edit-pfp {
+    position: relative;
+    bottom: -50px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid ghostwhite;
+    overflow: hidden;
+    background-color: #DFDAC8;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-pfp img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.edit-for-pfp {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0; 
+    z-index: 2;
+}
+
+.edit-for-pfp img {
+    width: 20px; 
+    height: 20px;
+}
+
+@media (max-width: 500px) {
+    .changes-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .edit-top-menu span h3 {
+        font-size: 14px;
+        margin-left: 15px;
+        margin-top: 20px;
+    }
+}
+

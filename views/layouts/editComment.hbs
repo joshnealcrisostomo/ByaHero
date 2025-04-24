@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles_folder/editComment.css">
+    <title>Edit Comment</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+
+        <div class="middle-panel">
+            <div class="top-menu">
+                <button type="button" class="return-btn">
+                    <img src="/icons/left_arrow.png" alt="return-btn">
+                </button>
+                <span>Return</span>
+            </div>
+            <h2>Edit Comment</h2>
+            
+            {{#if error}}
+                <div class="error-message">{{error}}</div>
+            {{/if}}
+
+            <form id="updateCommentForm" action="/updateComment/{{comment._id}}" method="POST" 
+                data-comment-id="{{comment._id}}" data-post-id="{{comment.postId}}">
+                
+                <input type="hidden" name="postId" value="{{comment.postId}}">
+                
+                <div class="create-comment-container">
+                    <div class="comment-text-container">
+                        <label for="edit-comment">Your Comment</label>
+                        <textarea id="edit-comment" name="commentText" class="comment-text-area" rows="4" placeholder="Edit your comment">{{comment.content}}</textarea>
+                    </div>
+
+                    <div class="comment-btns">
+                        <button type="submit" class="save-comment-btn">Save Changes!</button>
+                        <button type="button" class="cancel-comment-btn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="right-panel">
+            {{> searchPanel}}
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.return-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+
+        document.querySelector('.cancel-comment-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
+</body>
+</html>

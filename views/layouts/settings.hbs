@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles_folder/settings.css">
+    <title>Settings</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+        <div class="middle-panel">
+            <div class="search-container">
+                <div class="return-container">
+                    <button type="button" class="return-btn">
+                        <img src="/icons/left_arrow.png" alt="return-btn">
+                    </button>
+                    <span>
+                        Return
+                    </span>
+                </div>
+                <hr>
+                <br>
+                <h2>Settings</h2>
+                <div class="settings-section">
+                    <div class="setting-option">
+                        <label for="theme">Theme:</label>
+                        <select id="theme">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="system">System Default</option>
+                        </select>
+                    </div>
+                    <div class="setting-option">
+                        <label for="notifications" {{#unless isLoggedIn}} style="display:none;" {{/unless}}>Notifications:</label>
+                        <select id="notifications" {{#unless isLoggedIn}} style="display:none;" {{/unless}}>
+                            <option value="all">All Notifications</option>
+                            <option value="mentions">Only Mentions</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+                    <div class="setting-option">
+                        <label for="privacy" {{#unless isLoggedIn}} style="display:none;" {{/unless}}>Privacy:</label>
+                        <select id="privacy" {{#unless isLoggedIn}} style="display:none;" {{/unless}}>
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    <div class="setting-option">
+                        <label for="language">Language:</label>
+                        <select id="language">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                        </select>
+                    </div>
+                    <div class="setting-option">
+                        <label for="font-size">Font Size:</label>
+                        <input type="range" id="font-size" min="12" max="24" value="16">
+                    </div>
+                </div>
+                {{#unless isLoggedIn}}
+                    {{else}}
+                    <form id="deleteForm">
+                        <button type="button" class="delete-profile">
+                            <span>Delete Account</span>
+                        </button>
+                    </form>
+                {{/unless}}
+                <br>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector(".delete-profile").addEventListener("click", async function () {
+            const confirmDelete = confirm("Are you sure? This action cannot be undone.");
+                if (!confirmDelete) return;
+
+                try {
+                    const response = await fetch("/deleteAccount", {
+                        method: "DELETE",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert("✅ Account deleted successfully!");
+                        window.location.href = "/register";
+                    } else {
+                        alert(`❌ ${data.message}`);
+                    }
+                } catch (error) {
+                    console.error("❌ Error deleting account:", error);
+                    alert("❌ Network error. Please try again.");
+                }
+        });
+    </script>    
+    <script>
+        document.querySelector('.return-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
+</body>
+</html>

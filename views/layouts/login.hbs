@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_folder/login_style.css">
+    <title>Login Page</title>
+    <style>
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            color: #292623;
+            opacity: 0.7;
+            font-size: 12px;
+            user-select: none;
+        }
+        
+        .toggle-password:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h2>Login</h2>
+            <div class="social-icons">
+                <a href="#">
+                    <img src="/images/fb.png" alt="fb_icon">
+                </a>
+                <a href="#">
+                    <img src="/images/google.png" alt="google_icon">
+                </a>
+                <a href="#">
+                    <img src="/images/linkedin.png" alt="linkedin_icon">
+                </a>
+            </div>
+            <form id="login-form" method="POST" action="#">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group password-container">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <span class="toggle-password" onclick="togglePassword()">Show</span>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember Me</label>
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                </div>
+                <button type="submit" class="btn-login">Sign In</button>
+            </form>
+        </div>
+        
+        <div class="right-panel">
+            <h2>Welcome<br>Back!</h2>
+            <p>Don't have an account?</p>
+            <button type="button" class="btn-signup">Sign Up</button>
+        </div>
+    </div>
+
+    <script>
+        // Password visibility toggle function
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = 'Show';
+            }
+        }
+
+        // Signup button
+        document.querySelector('.btn-signup').addEventListener('click', function() {
+            window.location.href = '/register';
+        });
+
+        // Form submission
+        const loginForm = document.querySelector('#login-form');
+        loginForm.addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent default form submission
+            
+            let username = document.querySelector('#username').value.trim();
+            const password = document.querySelector('#password').value;
+            const rememberMe = document.querySelector('#remember-me').checked;
+            
+            // Ensure username starts with '@'
+            if (!username.startsWith('@')) {
+                username = '@' + username;
+            }
+            fetch('/loginPost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, rememberMe })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    if (result.redirect) {
+                        window.location.href = result.redirect;
+                    } else {
+                        window.location.href = '/dashboard';
+                    }
+                } else {
+                    alert(result.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

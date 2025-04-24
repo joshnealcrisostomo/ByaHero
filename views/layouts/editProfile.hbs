@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles_folder/editProfile_style.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="changes-container">
+
+            <div class="edit-top-menu">
+                <button type="button" class="exit-btn" onclick="redirectToProfile()">
+                    <img src="../icons/delete.png" alt="close-btn">
+                </button>
+                <h3>Edit Profile</h3>
+                <button type="submit" class="save-btn" form="updateProfileForm">Save</button>
+            </div>
+
+            <!-- Single Form -->
+            <form id="updateProfileForm" action="/updateProfile" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="username" value="{{loggedInUser}}">
+
+                <div class="edit-header-profile">
+                    
+                    <!-- Header Image Section -->
+                    <div class="edit-header-btn">
+                        <button type="button" class="edit-for-header">
+                            <img src="/icons/edit_pic.png" alt="edit-icon">
+                            <div class="edit-btn-overlay"></div>
+                        </button>
+                    </div>
+                    <div class="edit-header-overlay">
+                        <img src="{{headerPic}}" id="profile-header-pic" onerror="this.style.display='none'"> <!--display existing header pic -->
+                        <input type="file" name="headerPic" id="header-pic-input" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div class="edit-pfp">
+                        <img src="{{profilePic}}" alt="Profile picture"> <!--display existing profile pic -->
+                        <div class="edit-pfp-overlay"></div>
+                        <button type="button" class="edit-for-pfp">
+                            <img src="/icons/edit_pic.png" alt="edit-icon">
+                        </button>
+                        <input type="file" name="profilePic" id="profile-pic-input" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="edit-fields">
+                    <div class="name-field">
+                        <input type="text" class="name-input" id="display-name" name="displayName" placeholder="Display Name" value="{{displayName}}">
+                    </div>
+                    <div class="bio-field">
+                        <input type="text" class="name-input" id="bio-input" name="bio" placeholder="Bio" value="{{bio}}">
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <script src="/javascript/users.js"></script>
+    <script src="/javascript/editProfile.js"></script>
+</body>
+</html>

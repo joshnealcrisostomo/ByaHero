@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles_folder/create_style.css">
+        <title>Create Post</title>
+    </head>
+    <body>
+        <div class="container">
+            <div id="left-panel">
+                {{> navBar}}
+            </div>
+
+            <div class="middle-panel">
+                <div class="top-menu">
+                    <button type="button" class="return-btn">
+                        <img src="/icons/left_arrow.png" alt="return-btn">
+                    </button>
+                    <span>Return</span>
+                </div>
+                <h2>Create a Post!</h2>
+                
+                <div class="create-post-container">
+                    <div class="post-title-container">
+                        <textarea class="post-title-text-area" placeholder="Post Title"></textarea>
+                        <div class="char-count">
+                            0/200
+                        </div>
+                    </div>
+                    <div class="tags-btn-container">
+                        <label for="tags">Tags: </label>
+                        <select class="tag-options" name="tags" id="tags">
+                            <option value="Commute">Commute</option>
+                            <option value="Price">Price</option>
+                            <option value="Route">Route</option>
+                            <option value="Location">Location</option>
+                            <option value="Weather">Weather</option>
+                        </select>
+                    </div>
+                    <div class="body-post-container">
+                        <div class="body-container">
+                            <div class="body-icons">
+                                <div class="body-options-container">
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/bold.png" alt="bold-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/italics.png" alt="italics-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/underline.png" alt="underline-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/strikethrough.png" alt="strike-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/superscript.png" alt="superscript-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/link.png" alt="link-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/bullets.png" alt="bullets-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item" onclick="">
+                                        <img src="/icons/list.png" alt="list-btn" class="icon-body">
+                                    </a>
+                                    <a href="#" class="body-item image-upload-btn">
+                                        <img src="/icons/image.png" alt="image-btn" class="icon-body">
+                                    </a>
+                                    <input type="file" id="image-upload" name="postImage" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="body-text-container">
+                                <textarea class="body-text-area" placeholder="Body"></textarea>
+                            </div>
+                            <div id="image-preview" style="display: none; margin: 10px 0;">
+                                <img id="preview-img" src="" alt="Image Preview" style="max-width: 100%; max-height: 300px;">
+                                <button type="button" id="remove-image" style="display: block; margin-top: 5px;">Remove Image</button>
+                            </div>                            
+                        </div>
+                            <div class="create-post-btns">
+                                <a href="#" class="drafts-btn" onclick="">Drafts</a>
+                                <button type="button" class="save-draft-btn">Save as draft</button>
+                                <button type="button" class="post-btn">Post</button>
+                            </div>
+                    </div>
+
+                <input type="hidden" id="loggedInUsername" value="{{username}}">
+                <input type="hidden" id="loggedInDisplayName" value="{{displayName}}">
+                <input type="hidden" id="loggedInPfp" value="{{profilePic}}">
+                </div>
+            </div>
+
+            <div id="right-panel">
+                {{> searchPanel}}
+            </div>
+        </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('.return-btn').addEventListener('click', function() {
+                window.history.back();
+            });
+
+            document.querySelector('.post-btn').addEventListener('click', async function () {
+                const postTitle = document.querySelector('.post-title-text-area').value.trim();
+                const postContent = document.querySelector('.body-text-area').value.trim();
+                const tags = document.getElementById('tags').value;
+                const postusername = document.getElementById('loggedInUsername')?.value;
+                const displayName = document.getElementById('loggedInDisplayName')?.value;
+                const posterpfp = document.getElementById('loggedInPfp')?.value;
+                const imageFile = document.getElementById('image-upload').files[0];
+
+                if (!postTitle || !postContent) {
+                    alert("Post title and content cannot be empty!");
+                    return;
+                }
+
+                let base64Image = "";
+                if (imageFile) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(imageFile);
+                    reader.onload = async function () {
+                        base64Image = reader.result; 
+
+                        const postData = {
+                            postTitle,
+                            postContent,
+                            tags,
+                            postusername,
+                            displayName,
+                            posterpfp,
+                            postImage: base64Image 
+                        };
+
+                        const response = await fetch('/createPost', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(postData),
+                        });
+
+                        const data = await response.json();
+                        console.log(data);
+
+                        if (data.success) {
+                            window.location.href = "/dashboard"; 
+                        } else {
+                            alert("Failed to create post: " + data.message);
+                        }
+                    };
+                } else {
+                    // If no image, send post without an image
+                    const postData = {
+                        postTitle,
+                        postContent,
+                        tags,
+                        postusername,
+                        displayName,
+                        posterpfp,
+                        postImage: "" // Empty string if no image
+                    };
+
+                    const response = await fetch('/createPost', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(postData),
+                    });
+
+                    const data = await response.json();
+                    console.log(data);
+
+                    if (data.success) {
+                        window.location.href = "/dashboard"; 
+                    } else {
+                        alert("Failed to create post: " + data.message);
+                    }
+                }
+            });
+
+
+
+
+            // Image upload and preview
+            const imageUpload = document.getElementById("image-upload");
+            const imageButton = document.querySelector(".image-upload-btn");
+            const imagePreview = document.getElementById("image-preview");
+            const previewImg = document.getElementById("preview-img");
+            const removeImageBtn = document.getElementById("remove-image");
+
+            imageButton.addEventListener("click", function(e) {
+                e.preventDefault();
+                imageUpload.click();
+            });
+
+            imageUpload.addEventListener("change", function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImg.src = e.target.result;
+                        imagePreview.style.display = "block";
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            removeImageBtn.addEventListener("click", function() {
+                imageUpload.value = "";
+                imagePreview.style.display = "none";
+                previewImg.src = "";
+            }); 
+        });
+        </script>
+    </body>
+</html>

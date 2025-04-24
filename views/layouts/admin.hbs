@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_folder/admin_style.css">
+    <title>Admin Report</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> adminNavBar}}
+        </div>
+
+        <div class="middle-panel">
+            <br>
+            <br>
+            <div class="profile-menu">
+                <div class="prof-menu-btn">
+                    <span><a href="#" class="postsReport-btn active">Post</a></span>
+                    <span><a href="#" class="commentsReport-btn">Comment</a></span>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="filter-options">
+                    <select id="status-filter">
+                        <option value="">Filter by Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    <select id="sort-by">
+                        <option value="author">Sort by Author</option>
+                        <option value="report-reason">Sort by Report Reason</option>
+                        <option value="status">Sort by Status</option>
+                    </select>
+                </div>
+
+                <div class="reported-posts posts-content">
+                    {{> adminContent}}
+                </div>
+            </div>
+        </div>
+
+        <div id="right-panel">
+            {{> adminSummary}}
+        </div>
+    </div>
+    <script src="/javascript/admin.js"></script>
+</body>
+</html>

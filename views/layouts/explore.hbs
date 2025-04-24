@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles_folder/explore.css">
+    <title>{{title}}</title>
+    <style>
+        .post {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+        <div class="middle-panel">
+            <div class="search-container">
+                <div class="return-container">
+                    <button type="button" class="return-btn">
+                        <img src="/icons/left_arrow.png" alt="return-btn">
+                    </button>
+                    <span>Return</span>
+                </div>
+                <hr>
+                <br>
+                <h2>Search</h2>
+                <div class="search-section">
+                    <input type="text" id="search" placeholder="Search by Keyword">
+                    <a href="#" id="searchLink" class="btn-login">Search</a>
+                </div>
+                <div class="advanced-options">
+                    <div class="sort-options">
+                        <label for="sort-by">Sort by:</label>
+                        <select id="sort-by">
+                            <option>Last Post Date</option>
+                            <option>Upvotes</option>
+                            <option>Reply Count</option>
+                        </select>
+                        <div class="radio-options">
+                            <label>
+                                <input type="radio" name="sortOrder" value="ascending" checked> Ascending
+                            </label>
+                            <label>
+                                <input type="radio" name="sortOrder" value="descending"> Descending
+                            </label>
+                        </div>
+                    </div>
+                    <div class="tag-options">
+                        <label for="tag-select">Tags:</label>
+                        <select id="tag-select">
+                            <option>Any</option>
+                            <option>Commute</option>
+                            <option>Price</option>
+                            <option>Route</option>
+                            <option>Location</option>
+                            <option>Weather</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="latest-posts">
+                    {{#if isSearchResults}}
+                        {{> searchResults}}
+                    {{else}}
+                        <h2>Trending</h2>
+                        {{#each posts}}
+                            <div class="post" data-post-id="{{_id}}">
+                                <div class="post-title">
+                                    <a href="/post/{{_id}}">{{postTitle}}</a>
+                                </div>
+                                <div class="post-meta">
+                                    <span class="username">by
+                                        <a href="/profile/{{author.username}}">{{author.username}}</a>
+                                    </span>
+                                    <span class="upvotes">▲ {{votes}} ▼</span>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const returnBtn = document.querySelector('.return-btn');
+            if (returnBtn) {
+                returnBtn.addEventListener('click', function() {
+                    window.history.back();
+                });
+            }
+
+            const searchLink = document.getElementById('searchLink');
+            if (searchLink) {
+                searchLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    const keyword = document.getElementById('search').value;
+                    const searchEntirePost = document.getElementById('entirePostCheckbox') ? document.getElementById('entirePostCheckbox').checked : false;
+                    const searchTitleOnly = document.getElementById('titleOnlyCheckbox') ? document.getElementById('titleOnlyCheckbox').checked : false;
+                    const sortBy = document.getElementById('sort-by').value;
+                    const selectedSortOrder = document.querySelector('input[name="sortOrder"]:checked');
+                    const sortOrder = selectedSortOrder ? selectedSortOrder.value : 'ascending';
+                    const tagSelect = document.getElementById('tag-select');
+                    const tag = tagSelect ? tagSelect.value : '';
+
+                    const url = `/search?keyword=${encodeURIComponent(keyword)}&searchEntirePost=${searchEntirePost}&searchTitleOnly=${searchTitleOnly}&sortBy=${encodeURIComponent(sortBy)}&sortOrder=${sortOrder}&tag=${encodeURIComponent(tag)}`;
+
+                    window.location.href = url;
+                });
+            }
+
+            const postDivs = document.querySelectorAll('.post');
+            postDivs.forEach(postDiv => {
+                postDiv.addEventListener('click', function() {
+                    const postId = this.dataset.postId;
+                    if (postId) {
+                        window.location.href = `/post/${postId}`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

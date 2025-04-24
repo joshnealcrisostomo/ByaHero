@@ -1,0 +1,246 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.gif-container{
+  margin-top: 20px;
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -9px !important;
+}
+
+.gif-image {
+  width: 1000px;
+  height: auto;
+  object-fit: contain;
+}
+
+.content-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.keyboard-and-button{
+  text-align: center;
+  margin-left: 300px;
+}
+
+.keyboard {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #DFDAC8;
+  background-color: #292623;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0C5FB3;
+  transform: scale(1.05);
+}
+button:active {
+  transform: scale(1);
+}
+.jux-linx {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+.jux-linx a {
+  color: #DFDAC8;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.jux-linx a:hover {
+  text-decoration: underline;
+}
+
+body {
+  background-color: #f9fcfb;
+  color: #0C5FB3;
+  display: flex;
+
+  height: 90vh;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+.key {
+  font-size: 7vw;
+  display: inline-block;
+  letter-spacing: -1vw;
+  transition: transform 0.2s;
+}
+
+@keyframes pressDown1 {
+  30%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown2 {
+  70%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown3 {
+  30%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown4 {
+  40%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown5 {
+  20%,
+  30%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown6 {
+  60%,
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown7 {
+  10%,
+  20%,
+  100% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pressDown8 {
+  35%,
+  45%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+}
+
+
+.key:nth-child(1) {
+  animation: pressDown1 2s infinite;
+}
+
+.key:nth-child(2) {
+  animation: pressDown2 3s infinite;
+}
+
+.key:nth-child(3) {
+  animation: pressDown3 4s infinite;
+}
+
+.key:nth-child(4) {
+  animation: pressDown4 2.5s infinite;
+}
+
+.key:nth-child(5) {
+  animation: pressDown5 2.5s infinite;
+}
+
+.key:nth-child(6) {
+  animation: pressDown6 3.5s infinite;
+}
+
+.key:nth-child(7) {
+  animation: pressDown7 2.2s infinite;
+}
+
+.key:nth-child(8) {
+  animation: pressDown8 3.2s infinite;
+}
+
+.jux-linx {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+a {
+  text-decoration: none;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  padding: 5px 10px;
+  transition: 0.1s all ease-in;
+}
+
+a:nth-child(1):hover {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 2px 0 #349eff;
+}
+
+a:nth-child(2):hover {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 2px 0 #ff5757;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles_folder/editPost_style.css">
+        <title>Edit Post</title>
+    </head>
+    <body>
+        <div class="container">
+            <div id="left-panel">
+                {{> navBar}}
+            </div>
+
+            <div class="middle-panel">
+                <div class="top-menu">
+                    <button type="button" class="return-btn">
+                        <img src="/icons/left_arrow.png" alt="return-btn">
+                    </button>
+                    <span>Return</span>
+                </div>
+                <h2>Edit Post</h2>
+                {{#if error}}
+                    <div class="error-message">{{error}}</div>
+                {{/if}}
+                <form id="edit-form" action="/updatePost/{{post._id}}" method="POST">
+                    <div class="create-post-container">
+                        <div class="post-title-container">
+                            <label for="edit-title">Post Title</label>
+                            <textarea id="edit-title" name="postTitle" class="post-title-text-area" rows="2" placeholder="Post Title">{{post.postTitle}}</textarea>
+                            <div class="char-count" id="char-count">
+                                {{post.postTitle.length}}/200
+                            </div>
+                        </div>
+
+                        <div class="tags-btn-container">
+                            <label for="tags">Tags: </label>
+                            <select class="tag-options" name="tags" id="edit-tags">
+                                <option value="Commute">Commute</option>
+                                <option value="Price">Price</option>
+                                <option value="Route">Route</option>
+                                <option value="Location">Location</option>
+                                <option value="Weather">Weather</option>
+                            </select>
+                        </div>
+
+                        <div class="body-post-container">
+                            <div class="body-container">
+                                <div class="body-icons">
+                                    <div class="body-options-container">
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/bold.png" alt="bold-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/italics.png" alt="italics-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/underline.png" alt="underline-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/strikethrough.png" alt="strike-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/superscript.png" alt="superscript-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/link.png" alt="link-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/bullets.png" alt="bullets-btn" class="icon-body">
+                                        </a>
+                                        <a href="#" class="body-item" onclick="">
+                                            <img src="../icons/list.png" alt="list-btn" class="icon-body">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="body-text-container">
+                                    <textarea id="edit-body" name="postContent" class="body-text-area" rows="5" placeholder="Body">{{post.postContent}}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="create-post-btns">
+                                <button type="submit" class="post-btn">Save Changes!</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="right-panel">
+                {{> searchPanel}}
+            </div>
+        </div>
+        <script>
+            document.querySelector('.return-btn').addEventListener('click', function() {
+                window.history.back();
+            });
+            
+            // Update character count for title
+            document.addEventListener('DOMContentLoaded', function() {
+                const titleTextarea = document.getElementById('edit-title');
+                const charCount = document.getElementById('char-count');
+                
+                titleTextarea.addEventListener('input', function() {
+                    charCount.textContent = `${this.value.length}/200`;
+                });
+                
+                // Set initial character count
+                charCount.textContent = `${titleTextarea.value.length}/200`;
+                
+                // Set the selected tag based on the post's tag
+                const tagSelect = document.getElementById('edit-tags');
+                const postTag = "{{post.tags}}";
+                
+                if (postTag) {
+                    for (let i = 0; i < tagSelect.options.length; i++) {
+                        if (tagSelect.options[i].value === postTag.toLowerCase()) {
+                            tagSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

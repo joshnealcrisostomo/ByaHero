@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_folder/about.css">
+    <title>ByaHero!</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+
+        <div class="middle-panel">
+            <div class="top-menu">
+                <button type="button" class="return-btn">
+                    <img src="/icons/left_arrow.png" alt="return-btn">
+                </button>
+                <span>Return</span>
+            </div>
+            <div class="devs">
+                <h2>DEVELOPER</h2>
+                <p>Josh Neal Crisostomo</p>
+            </div>
+            <div class="packages">
+                <h2>NPM PACKAGES</h2>
+                <table>
+                    <tr>
+                        <th>Package Name</th>
+                        <th>Source</th>
+                    </tr>
+                    <tr>
+                        <td>Multer</td>
+                        <td><a href="https://www.npmjs.com/package/multer">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Express-Handlebars</td>
+                        <td><a href="https://www.npmjs.com/package/express-handlebars">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>BCrypt</td>
+                        <td><a href="https://www.npmjs.com/package/bcrypt">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Connect-mongo</td>
+                        <td><a href="https://www.npmjs.com/package/connect-mongo">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cookie-parser</td>
+                        <td><a href="https://www.npmjs.com/package/cookie-parser">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cors</td>
+                        <td><a href="https://www.npmjs.com/package/cors">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Express</td>
+                        <td><a href="https://www.npmjs.com/package/express">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Express-session</td>
+                        <td><a href="https://www.npmjs.com/package/express-session">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Method-override</td>
+                        <td><a href="https://www.npmjs.com/package/method-override">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Mongoose</td>
+                        <td><a href="https://www.npmjs.com/package/mongoose">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dotenv</td>
+                        <td><a href="https://www.npmjs.com/package/dotenv">Install</a></td>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <h2>OTHER DEPENDENCIES</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Source</th>
+                    </tr>
+                    <tr>
+                        <td>Mongo DB</td>
+                        <td><a href="https://www.mongodb.com/">Install</a></td>
+                    </tr>
+                    <tr>
+                        <td>Node JS</td>
+                        <td><a href="https://nodejs.org/en/download">Install</a></td>
+                    </tr>                    
+                </table>                    
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>            
+        </div>
+
+        <div id="right-panel">
+            {{> searchPanel}}
+        </div>
+    </div>
+    <script>
+        document.querySelector('.return-btn').addEventListener('click', function() {
+            window.history.back();
+        });        
+    </script>
+</body>
+</html>

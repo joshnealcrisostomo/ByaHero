@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFDAC8;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.middle-panel {
+    flex: 1;
+    background: #DFDAC8;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid #e4d9cd;
+    border-top: 0px;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.search-container {
+    background-color: #DFDAC8;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 1px 15px #4A4742;
+    width: 990px;
+    max-width: 90%;
+    margin: 25px;
+}
+
+.search-container h2 {
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.settings-section {
+    margin-top: 20px;
+}
+
+.setting-option {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+    margin-right: 10px;
+}
+
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    color: #555;
+    appearance: none;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4A4742;
+    box-shadow: 0 0 5px rgba(74, 71, 66, 0.5);
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+input[type="range"] {
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.return-container button {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.return-container button:hover {
+    background-color: rgba(12, 95, 179, 0.2);
+    border-radius: 100%;
+}
+
+.return-container button img {
+    width: 20px;
+    height: 20px;
+}
+
+.return-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.return-container span {
+    margin-top: 5px;
+}
+
+.delete-profile {
+    width: 50%;
+    padding: 4px 15px;
+    border: 1px solid #8E1600;
+    border-radius: 100px;
+    background-color: #DFDAC8;
+    font-size: 14px;
+    color: #8E1600;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px;
+}

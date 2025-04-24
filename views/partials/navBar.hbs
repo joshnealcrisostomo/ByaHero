@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar</title>
+    <link rel="stylesheet" href="/styles_folder/navBar_styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo">
+                {{#if isLoggedIn}}
+                <a href="/dashboard"><img src="/images/byahero.gif"></a>
+                {{else}}
+                <a href="/"><img src="/images/byahero.gif"></a>
+                {{/if}}
+            </div>
+            <div class="menu-icons">
+                {{#if isLoggedIn}}
+                    <a href="/dashboard" class="menu-item">
+                        <img src="/icons/home.png" alt="home-btn" class="icon">
+                        <span class="menu-text">Home</span>
+                    </a>
+                    <a href="/explore" class="menu-item">
+                        <img src="/icons/search.png" alt="explore-btn" class="icon">
+                        <span class="menu-text">Explore</span>
+                    </a>
+                    <a href="/notifications" class="menu-item">
+                        <img src="/icons/notification.png" alt="notif-bell" class="icon">
+                        <span class="menu-text">Notifications</span>
+                    </a>
+                    <a href="/profile/{{loggedInUser}}" class="menu-item">
+                        <img src="/icons/user.png" alt="profile-icon" class="icon">
+                        <span class="menu-text">Profile</span>
+                    </a>
+                    <a href="/settings" class="menu-item">
+                        <img src="/icons/settings.png" alt="setting-icon" class="icon">
+                        <span class="menu-text">Settings</span>
+                    </a>
+                    <div class="menu-item">
+                        <button type="button" class="btn-post">
+                            <span>
+                                + Create
+                            </span>
+                        </button>
+                    </div>
+                    <div class="menu-item">
+                        <button type="button" class="logout"><span>Logout</span></button>
+                    </div>
+                {{else}}
+                    <a href="/" class="menu-item">
+                        <img src="/icons/home.png" alt="home-btn" class="icon">
+                        <span class="menu-text">Home</span>
+                    </a>
+                    <a href="/explore" class="menu-item">
+                        <img src="/icons/search.png" alt="explore-btn" class="icon">
+                        <span class="menu-text">Explore</span>
+                    </a>
+                    <a href="/settings" class="menu-item" onclick="redirectTo('visitor_settings')">
+                        <img src="/icons/settings.png" alt="setting-icon" class="icon">
+                        <span class="menu-text">Settings</span>
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.btn-post').addEventListener('click', function() {
+            window.location.href = '/createPost';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutButton = document.querySelector('.logout');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    const isConfirmed = confirm("Are you sure you want to logout?");
+                    if (isConfirmed) {
+                        window.location.href = '/logout';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

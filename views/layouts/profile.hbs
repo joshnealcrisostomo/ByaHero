@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_folder/profile_style.css">
+    <title>{{displayName}}'s Profile</title>   
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+
+        <div class="middle-panel">
+            <div class="top-menu">
+                <button type="button" class="return-btn">
+                    <img src="/icons/left_arrow.png" alt="return-btn">
+                </button>
+                <span>{{displayName}}</span>
+            </div>
+            <div class="header-profile">
+                <div class="header-img">
+                    <img src="{{headerPic}}" id="profile-header-pic" onerror="this.style.display='none'">
+                </div>
+                <div class="pfp">       
+                    <img src="{{profilePic}}" alt="Profile picture">
+                </div>
+            </div>
+
+            <div class="user-info">
+                <div class="edit-prof-btn">
+                    <div class="edit-profile">
+                        <button type="button" class="edit-btn">Edit Profile</button>
+                    </div>
+                </div>
+                <div class="basic-info">
+                    <h3>{{displayName}}</h3>
+                    <p class="username">{{username}}</p>
+                    <br>
+                    <div class="bio-box">
+                        <p class="bio">{{bio}}</p>
+                    </div>
+                </div>
+
+                <div class="profile-menu">
+                    <div class="prof-menu-btn">
+                        <span><a href="#" class="posts-btn active">Posts</a></span>
+                        <span><a href="#" class="comments-btn">Comments</a></span>
+                        <span><a href="#" class="upvoted-btn">Upvoted</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                {{> profileContent}}
+            </div>
+        </div>
+
+        <div id="right-panel">
+            {{> searchPanel}}
+        </div>
+    </div>
+
+    <script src="/javascript/profile.js"></script>
+    <script src="/javascript/crudPost.js"></script>
+</body>
+</html>

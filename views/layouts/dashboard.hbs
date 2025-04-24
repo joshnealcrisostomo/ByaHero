@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_folder/dashboard_style.css">
+    <title>ByaHero!</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+
+        <div class="middle-panel">
+            {{#if isLoggedIn}}
+                {{#each posts}}
+                    <div class="post">
+                        <div class="post_avatar">
+                            <a href="/profile/{{author.username}}">
+                                <img src="{{author.profilePic}}" alt="Profile Picture" />
+                            </a>
+                        </div>
+
+                        <div class="post_body">
+                            <div class="post_header">
+                                <div class="post_headerText">
+                                    <h3><a href="/profile/{{author.username}}">{{author.displayName}}</a></h3>
+                                    <span class="post-username">{{author.username}}</span>
+                                </div>
+                                <span class="post-duration">{{createdAt}}</span>
+
+                                <div class="post_headerDescription">
+                                    <h2><a href="/post/{{_id}}">{{postTitle}}</a></h2>
+                                    <p>{{postContent}}</p>
+                                    {{#if tags}}
+                                        <div class="post-tags {{tags}}-tag">
+                                            {{tags}}
+                                        </div>
+                                    {{/if}}                                    
+                                </div>
+                            </div>
+
+                            {{#if postImage}}
+                                <img src="{{postImage}}" alt="Post Image" class="post-image" />
+                            {{/if}}
+
+                            <div class="post-actions">
+                                <div class="vote-container">
+                                    <a href="#" class="vote-btn"><img src="/icons/upvoted.png" alt="upvote"></a>
+                                    <span class="vote-count">{{votes}}</span>
+                                    <a href="#" class="vote-btn"><img src="/icons/downvoted.png" alt="downvote"></a>
+                                </div>
+
+                                <div class="post-item-container">
+                                    <a href="/post/{{_id}}" class="post-item"><img src="/icons/comments.png" alt="comment"></a>
+                                    <a href="#" class="post-item"><img src="/icons/share.png" alt="share"></a>
+                                    <a href="#" class="post-item"><img src="/icons/bookmark.png" alt="bookmark"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div class="visitor-posts-container" id="visitor-posts-container">
+                    {{#each posts}}
+                        <div class="post">
+                            <div class="post_avatar">
+                                <a href="/profile/{{author.username}}"><img src="{{author.profilePic}}" alt="Profile Picture"/><a/>
+                            </div>
+
+                            <div class="post_body">
+                                <div class="post_header">
+                                    <div class="post_headerText">
+                                        <h3>{{author.displayName}}</h3>
+                                        <span class="post-username">{{author.username}}</span>
+                                    </div>
+                                    <span class="post-duration">{{createdAt}}</span>
+
+                                    <div class="post_headerDescription">
+                                        <h2><a href="/post/{{_id}}">{{postTitle}}</a></h2>
+                                        <p>{{postContent}}</p>
+                                        {{#if tags}}
+                                            <div class="post-tags {{tags}}-tag">
+                                                {{tags}}
+                                            </div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+
+                                {{#if postImage}}
+                                    <img src="{{postImage}}" alt="Post Image" class="post-image" />
+                                {{/if}}
+
+                                <div class="post-actions">
+                                    <div class="vote-container">
+                                        <a href="#" class="vote-btn"><img src="/icons/upvoted.png" alt="upvote"></a>
+                                        <span class="vote-count">{{votes}}</span>
+                                        <a href="#" class="vote-btn"><img src="/icons/downvoted.png" alt="downvote"></a>
+                                    </div>
+
+                                    <div class="post-item-container">
+                                        <a href="#" class="post-item"><img src="/icons/comments.png" alt="comment"></a>
+                                        <a href="#" class="post-item"><img src="/icons/share.png" alt="share"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div>
+
+        <div id="right-panel">
+            {{> searchPanel}}
+        </div>
+    </div>
+    <script>
+        // Tag filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tagCheckboxes = document.querySelectorAll('.switch');
+            
+            // Add event listener to each checkbox
+            tagCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    filterPostsByTags();
+                });
+            });
+            
+            // Function to filter posts based on selected tags
+            function filterPostsByTags() {
+                const selectedTags = [];
+                
+                // Get all selected tags
+                tagCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        selectedTags.push(checkbox.id);
+                    }
+                });
+                
+                // Redirect to dashboard with selected tags as query parameters
+                if (selectedTags.length > 0) {
+                    window.location.href = '/dashboard?tags=' + selectedTags.join(',');
+                } else {
+                    window.location.href = '/dashboard';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{{#if posts.length}}
+    {{#each posts}}
+        <div class="post">
+            <div class="post-header">
+                <div>
+                    <p class="post-duration">{{createdAt}}</p>
+                </div>                     
+            </div>
+            <div class="post-content">
+                <h3><a href="/post/{{this._id}}">{{postTitle}}</a></h3>
+                <p>{{postContent}}</p>
+                {{#if postImage}}
+                    <img src="{{postImage}}" alt="Post Image">
+                {{/if}}
+            </div>
+            <div class="post-footer">
+                <span>▲ {{votes}} ▼</span>
+            </div>
+        </div>
+    {{/each}}
+{{else}}
+    <img src="/icons/posts.png" alt="pin-icon" class="empty-icon">
+    <p>No posts available.</p>
+{{/if}}

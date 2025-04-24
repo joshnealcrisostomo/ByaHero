@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles_folder/post_style.css">
+    <title>{{post.postTitle}}</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> adminNavBar}}
+        </div>
+        <div class="middle-panel">
+            <div class="top-menu">
+                <button type="button" class="return-btn">
+                    <img src="/icons/left_arrow.png" alt="return-btn">
+                </button>
+                <span>Post</span>
+            </div>
+
+            <div class="post">
+                <div class="post_avatar">
+                    <a href="/profile/{{authorProfile.username}}"><img src="{{authorProfile.profilePic}}" alt="Profile Picture"/></a>
+                </div>
+                <div class="post_body">
+                    <div class="post_header">
+                        <div class="post_headerText">
+                            <h3><a href="/profile/{{authorProfile.username}}">{{authorProfile.displayName}}</a></h3>
+                            <span class="post-username">{{authorProfile.username}}</span>
+                            {{#if isLoggedIn}}
+                            <div class="dots-container">
+                                <div class="dots" onclick="toggleOptionsMenu(event)">⋮</div>
+                                <div id="dotOptions" class="dots-menu">
+                                    <a href="#">Report</a>
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <span class="post-duration">{{post.createdAt}}</span>
+                        <div class="post_headerDescription">
+                            <h2>{{post.postTitle}}</h2>
+                            <p>{{post.postContent}}</p>
+                        </div>
+                    </div>
+
+                    {{#if post.postImage}}
+                    <img src="{{post.postImage}}" alt="Post Image" class="post-image"/>
+                    {{/if}}
+
+                    <div class="post-actions">
+                        <div class="vote-container">
+                            <a href="#" class="vote-btn">
+                                <img src="/icons/upvoted.png" alt="upvote">
+                            </a>
+                            <span class="vote-count">{{post.votes}}</span>
+                            <a href="#" class="vote-btn">
+                                <img src="/icons/downvoted.png" alt="downvote">
+                            </a>
+                        </div>
+                        <div class="post-item-container">
+                            <a href="#" class="post-item">
+                                <img src="/icons/share.png" alt="share">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-section-container">
+                {{#if ../isLoggedIn}}
+                <div class="add-comment-section">
+                    <textarea placeholder="  Add a comment..."></textarea>
+                    <button class="add-comment-btn">Comment</button>
+                </div>
+                {{/if}}
+
+                <div class="sort-section">
+                    <label for="sort-comments">Sort by:</label>
+                    <select class="sort-options" id="sort-comments">
+                        <option value="best">Best</option>
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+
+                <div class="comments-section">
+                    {{#each post.comments}}
+                    <div class="comment">
+                        <div class="user-comment">
+                            <strong>{{username}}</strong>
+                            <span>{{duration}}</span>
+                        </div>
+                        <div class="main-comment">
+                            {{#if title}}
+                            <h2>{{title}}</h2>
+                            {{/if}}
+                            {{#if content}}
+                                {{#if content.length}}
+                                    <ul>
+                                        {{#each content}}
+                                            <li>{{this}}</li>
+                                        {{/each}}
+                                    </ul>
+                                {{else}}
+                                    <p>{{content}}</p>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                        <div class="comment-actions">
+                            <button class="vote-btn upvote">▲</button>
+                            <span class="vote-count">{{votes}}</span>
+                            <button class="vote-btn downvote">▼</button>
+                            {{#if ../isLoggedIn}}
+                            <button class="action-btn">Reply</button>
+                            {{/if}}
+                            <button class="action-btn">Share</button>
+                        </div>
+
+                        {{#if nestedComments.length}}
+                        <div class="nested-comments">
+                            {{#each nestedComments}}
+                            <div class="comment nested-comment">
+                                <div class="user-comment">
+                                    <strong>{{username}}</strong>
+                                    <span>{{duration}}</span>
+                                </div>
+                                <div class="main-comment">
+                                    <p>{{content}}</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="vote-btn upvote">▲</button>
+                                    <span class="vote-count">{{votes}}</span>
+                                    <button class="vote-btn downvote">▼</button>
+                                    {{#if ../../isLoggedIn}}
+                                    <button class="action-btn">Reply</button>
+                                    {{/if}}
+                                    <button class="action-btn">Share</button>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+        <div id="right-panel">
+        </div>
+    </div>
+    <script src="/javascript/post.js"></script>
+</body>
+</html>

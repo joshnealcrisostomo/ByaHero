@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles_folder/publicProfile_style.css">
+    <title>{{displayName}}'s Profile</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> adminNavBar}}
+        </div>
+
+        <div class="middle-panel">
+            <div class="top-menu">
+                <button type="button" class="return-btn">
+                    <img src="/icons/left_arrow.png" alt="return-btn">
+                </button>
+                <span>{{displayName}}</span>
+            </div>
+            <div class="header-profile">
+                <div class="header-img"></div>
+                <div class="pfp">
+                    <img src="{{profilePic}}" alt="Profile picture">
+                </div>
+            </div>
+
+            <div class="user-info">
+                <div class="basic-info">
+                    <h3>{{displayName}}</h3>
+                    <p class="username">{{username}}</p>
+                    <br>
+                    <div class="bio-box">
+                        <p class="bio">{{bio}}</p>
+                    </div>
+                </div>
+
+                <div class="profile-menu">
+                    <div class="prof-menu-btn">
+                        <span><a href="#" class="posts-btn active">Posts</a></span>
+                        <span><a href="#" class="comments-btn">Comments</a></span>
+                        <span><a href="#" class="upvoted-btn">Upvoted</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+               {{> pubProfileContent}}
+            </div>
+        </div>
+        <div id="right-panel">
+            {{> adminSummary}}
+        </div>
+    </div>
+
+    <script src="/javascript/publicProfile.js"></script>
+</body>
+</html>

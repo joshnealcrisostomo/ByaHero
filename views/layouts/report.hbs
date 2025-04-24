@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles_folder/report.css">
+    <title>Edit Post</title>
+</head>
+<body>
+    <div class="container">
+        <div id="left-panel">
+            {{> navBar}}
+        </div>
+
+        <div class="middle-panel">
+            <div class="top-menu">
+                <button type="button" class="return-btn">
+                    <img src="/icons/left_arrow.png" alt="return-btn">
+                </button>
+                <span>Return</span>
+            </div>
+            <h2>Report Page</h2>
+
+            <div class="report-container">
+                <div class="report-title">
+                    <h3>What type of issue are you reporting?</h3>
+                </div>
+
+                <form action="/report/{{reportedItemId}}" method="POST" id="reportForm">
+                    <div class="report-choices">
+                        <label>
+                            <input type="radio" name="reportType" value="Hate"> Hate
+                        </label>
+                        <p>Targets individuals or groups with harmful, discriminatory, or hateful language.</p>
+                        <label>
+                            <input type="radio" name="reportType" value="Bug"> Bug
+                        </label>
+                        <p>Technical issue preventing proper use of the platform.</p>
+                        <label>
+                            <input type="radio" name="reportType" value="Spam"> Spam
+                        </label>
+                        <p>Unsolicited or repetitive content, often for promotional purposes.</p>
+                        <label>
+                            <input type="radio" name="reportType" value="Inappropriate Content"> Inappropriate Content
+                        </label>
+                        <p>Violates community guidelines with graphic, NSFW, or disturbing material.</p>
+                        <label>
+                            <input type="radio" name="reportType" value="Privacy"> Privacy
+                        </label>
+                        <p>Shares personal information of yourself or others without consent.</p>
+                        <label>
+                            <input type="radio" name="reportType" value="Illegal"> Illegal
+                        </label>
+                        <p>Content that breaks the law, such as copyright infringement or threats.</p>
+                    </div>
+
+                    <div class="confirm-btn-container">
+                        <button type="submit" class="report-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="right-panel">
+            {{> searchPanel}}
+        </div>
+    </div>
+    <script>
+        document.querySelector('.return-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
+    <script src="/javascript/report.js"></script>
+</body>
+</html>

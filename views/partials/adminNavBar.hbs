@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar</title>
+    <link rel="stylesheet" href="/styles_folder/navBar_styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo">
+                <img src="/images/byahero.gif">
+            </div>
+            <div class="menu-icons">
+                <a href="/adminNotifications" class="menu-item">
+                    <img src="/icons/notification.png" alt="notif-bell" class="icon">
+                    <span class="menu-text">Notifications</span>
+                </a>
+                <a href="/admin" class="menu-item">
+                    <img src="/icons/user.png" alt="profile-icon" class="icon">
+                    <span class="menu-text">Admin</span>
+                </a>
+                <a href="/adminSettings" class="menu-item">
+                    <img src="/icons/settings.png" alt="setting-icon" class="icon">
+                    <span class="menu-text">Settings</span>
+                </a>
+    
+                <div class="menu-item">
+                    <button type="button" class="logout"><span>Logout</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutButton = document.querySelector('.logout');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    const isConfirmed = confirm("Are you sure you want to logout?");
+                    if (isConfirmed) {
+                        window.location.href = '/logout';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

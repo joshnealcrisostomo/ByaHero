@@ -1,0 +1,18 @@
+<div class="search-results">
+    <h2>Search Results {{#if searchQuery}}for "{{searchQuery}}"{{/if}}</h2>
+    {{#each posts}}
+    <div class="post" data-post-id="{{_id}}">
+        <div class="post-title">
+            <a href="/post/{{_id}}">{{postTitle}}</a>
+        </div>
+        <div class="post-meta">
+            <span class="username">by 
+                <a href="/profile/{{author.username}}">{{author.username}}</a>
+            </span>
+            <span class="upvotes">▲ {{votes}} ▼</span>
+        </div>
+    </div>
+    {{else}}
+    <p>No results found.</p>
+    {{/each}}
+</div>

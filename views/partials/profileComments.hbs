@@ -1,0 +1,27 @@
+{{#if comments.length}}
+    {{#each comments}}
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <p class="comment-duration">{{createdAt}}</p>
+                </div>
+                <div class="comment-dots" data-comment-id="{{this.commentId}}">⋮</div>
+                <div id="comment-menu-{{this.commentId}}" class="comment-dots-menu">
+                    <a href="/editComment/{{this._id}}" class="edit-comment-btn">Edit</a>
+                    <a href="#" class="delete-comment-btn" data-comment-id="{{this._id}}">Delete</a>
+                </div>
+            </div>
+            <div class="comment-content">
+                <a href="/post/{{this.postId._id}}" class="full-link">
+                    <p>{{this.content}}</p>
+                </a>
+            </div>
+            <div class="comment-footer">
+                <span>▲ {{this.votes}} ▼</span>
+            </div>
+        </div>
+    {{/each}}
+{{else}}
+    <img src="/icons/comments.png" alt="comment-icon" class="empty-icon">
+    <p>No comments available.</p>
+{{/if}}

@@ -1,0 +1,24 @@
+{{#if upvoted.length}}
+    {{#each upvoted}}
+        <div class="post">
+            <div class="post-header">
+                <div>
+                    <p class="post-duration">{{createdAt}}</p>
+                </div>       
+            </div>
+            <div class="post-content">
+                <h3><a href="/post/{{this._id}}">{{this.postTitle}}</a></h3>
+                <p>{{this.postContent}}</p>
+                {{#if postImage}}
+                    <img src="{{this.postImage}}" alt="Post Image">
+                {{/if}}
+            </div>
+            <div class="post-footer">
+                <span>▲ {{this.votes}} ▼</span>
+            </div>
+        </div>
+    {{/each}}
+{{else}}
+    <img src="/icons/upvoted.png" alt="upvote-icon" class="empty-icon">
+    <p>No upvotes available.</p>
+{{/if}}
