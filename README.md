@@ -196,6 +196,7 @@ Before you begin, ensure you have the following installed:
 ```bash 
 git clone https://github.com/joshnealcrisostomo/ByaHero.git
 cd ByaHero
+```
 
 **Install Dependencies**
 Install all the required dependencies using npm
@@ -204,3 +205,4 @@ This will install all packages listed in the package.json file, including Expres
 
 ```bash 
 npm install
+```
