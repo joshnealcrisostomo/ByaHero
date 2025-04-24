@@ -169,7 +169,7 @@ router.get('/profile/:username', async (req, res) => {
             profilePic = 'https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png';
         }
 
-        // Header Picture (similar logic)
+        // Header Picture
         if (viewedUser.headerPic) {
             if (viewedUser.headerPic.startsWith('data:image/')) {
                 headerPic = viewedUser.headerPic;
@@ -216,7 +216,6 @@ router.get('/profile/:username', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
-
 
 // Profile menu navigation
 router.get('/profile/:username/content/:tab', async (req, res) => {
@@ -280,15 +279,11 @@ router.get('/profile/:username/content/:tab', async (req, res) => {
                     res.render('../partials/pubProfilePosts', { posts: userPosts, Post });
             }
         }
-
-
     } catch (error) {
         console.error('Error fetching user profile content:', error);
         res.status(500).send('Internal server error');
     }
 });
-
-
 
 // Explore route
 router.get('/explore', async (req, res) => {
@@ -565,8 +560,6 @@ router.post('/createPost', async (req, res) => {
     }
 });
 
-
-
 // Delete post router
 router.delete('/deletePost', async (req, res) => {
     if (!req.session.user) {
@@ -598,7 +591,7 @@ router.delete('/deletePost', async (req, res) => {
     }
 });
 
-// CREATE COMMENT
+// Create comment
 router.post("/comments", async (req, res) => {
     let { postId, username, content } = req.body;
     if (!postId || !username || !content) {
@@ -620,7 +613,7 @@ router.post("/comments", async (req, res) => {
     }
 });
 
-// READ comments for a post
+// Read comments
 router.get('/comments/:postId', async (req, res) => { 
     const { postId } = req.params;
 
@@ -629,7 +622,7 @@ router.get('/comments/:postId', async (req, res) => {
     res.json(response);
 });
 
-// READ replies for a comment
+// Read replies
 router.get('/replies/:commentId', async (req, res) => { 
     try {
         const { commentId } = req.params;
@@ -647,7 +640,6 @@ router.get('/replies/:commentId', async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
-
 
 // Update comment
 router.post('/updateComment/:id', async (req, res) => {
@@ -731,7 +723,7 @@ router.get('/notifications', (req, res) => {
     });
 });
 
-// GET route to load the edit comment page
+// Edit comment
 router.get('/editComment/:id', async (req, res) => {
     try {
         if (!req.session.user) {
@@ -762,6 +754,7 @@ router.get('/editComment/:id', async (req, res) => {
     }
 });
 
+// Profile view of comments
 router.get("/profile/comments", async (req, res) => {
     try {
         if (!req.session.user) {
@@ -785,7 +778,7 @@ router.get("/profile/comments", async (req, res) => {
     }
 });
 
-// Update GET route
+// Edit post
 router.get('/editPost/:id', async (req, res) => {
     try {
         if (!req.session.user) {
@@ -817,7 +810,7 @@ router.get('/editPost/:id', async (req, res) => {
     }
 });
 
-// Update POST route
+// Update post
 router.post('/updatePost/:id', async (req, res) => {
     try {
         if (!req.session.user) {
