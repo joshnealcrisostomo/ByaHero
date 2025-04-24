@@ -5,7 +5,7 @@ ByaHero! is a forum-like platform designed to connect Filipino commuters and bui
 ----------------------------------------------------------------------
 
 ## Table of Contents
-1. [Motivation](#🔑-motivation)
+1. [Motivation](#-motivation)
 2. [Solution](#solution)
 3. [What I Learned](#what-i-learned)
 4. [Features](#features)
@@ -15,9 +15,9 @@ ByaHero! is a forum-like platform designed to connect Filipino commuters and bui
 
 ----------------------------------------------------------------------
 
-## 🔑 Motivation
+## Motivation
 
-Commuting in the Philippines is often challenging and frustrating, especially for those unfamiliar with specific routes or transportation options. Many commuters struggle with:
+🔑 Commuting in the Philippines is often challenging and frustrating, especially for those unfamiliar with specific routes or transportation options. Many commuters struggle with:
 
 - Not knowing where to board public transportation
 - Confusion about which vehicles to take for specific destinations
@@ -31,9 +31,9 @@ ByaHero! was created to fill the gap between general social media and specialize
 
 ----------------------------------------------------------------------
 
-## 🩹 Solution
+## Solution
 
-ByaHero! addresses these challenges by providing:
+🩹 ByaHero! addresses these challenges by providing:
 
 - A dedicated platform for route guidance and commuting experiences
 - Real-time updates on traffic conditions and transportation availability
@@ -43,9 +43,9 @@ ByaHero! addresses these challenges by providing:
 
 ----------------------------------------------------------------------
 
-## 💡 What I Learned
+## What I Learned
 
-Developing ByaHero! taught me, as a Computer Science student:
+💡 Developing ByaHero! taught me, as a Computer Science student:
 
 - Building community-focused web applications with MongoDB, Express, and Node.js
 - Implementing complex user interaction systems (comments, replies, voting)
@@ -55,9 +55,9 @@ Developing ByaHero! taught me, as a Computer Science student:
   
 ----------------------------------------------------------------------
 
-## 🚀 Features
+## Features
 
-The web application is built using JavaScript, with a Node.js and Express backend, Handlebars for templating, and MongoDB as the primary data store. Most features below are powered by dynamic client-server interactions that enable full CRUD (Create, Read, Update, Delete) functionality. From viewing and managing posts to real-time interactions like commenting and voting, the application ensures a smooth and responsive user experience through well-integrated frontend and backend components.
+🚀 The web application is built using JavaScript, with a Node.js and Express backend, Handlebars for templating, and MongoDB as the primary data store. Most features below are powered by dynamic client-server interactions that enable full CRUD (Create, Read, Update, Delete) functionality. From viewing and managing posts to real-time interactions like commenting and voting, the application ensures a smooth and responsive user experience through well-integrated frontend and backend components.
 
 💻 **View All Posts**
 - For Visitors:
@@ -156,7 +156,7 @@ The web application is built using JavaScript, with a Node.js and Express backen
 
 ----------------------------------------------------------------------
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 **Backend:** ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white) ![Express-session](https://img.shields.io/badge/Express--session-000000?style=flat&logo=express&logoColor=white) ![Handlebars](https://img.shields.io/badge/Handlebars.js-000000?style=flat&logo=handlebarsdotjs&logoColor=orange)
 
@@ -170,16 +170,16 @@ The web application is built using JavaScript, with a Node.js and Express backen
 
 ----------------------------------------------------------------------
 
-## 👥 Credits
+## Credits
 
-Collaborators:
+👥 Collaborators:
 1. Patrick Lim
 2. Isabella Ross
 3. Eulysis Dimailig
 
 ----------------------------------------------------------------------
 
-## 🥳 Getting Started
+## Getting Started
 
 This guide will walk you through the process of setting up and running the ByaHero! web application locally on your machine.
 
