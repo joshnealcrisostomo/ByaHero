@@ -5,7 +5,7 @@ ByaHero! is a forum-like platform designed to connect Filipino commuters and bui
 ----------------------------------------------------------------------
 
 ## Table of Contents
-1. [Motivation](#motivation)
+1. [Motivation](#🔑-motivation)
 2. [Solution](#solution)
 3. [What I Learned](#what-i-learned)
 4. [Features](#features)
